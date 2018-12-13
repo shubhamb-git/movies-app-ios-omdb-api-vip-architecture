@@ -78,6 +78,8 @@ class MoviesListVC: BaseViewController {
     // Pull to refresh action
     @objc private func refreshList(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
+        moviesArray.removeAll()
+        moviesCollectionView.reloadData()
         currentPage = 1
         interactor?.getMovies(for: currentPage)
     }
@@ -144,9 +146,6 @@ extension MoviesListVC: MovieDisplayLogic {
             var startIndex: Int?
             var endIndex: Int?
             if response.success {
-                if currentPage == 1 {
-                    moviesArray.removeAll()
-                }
                 if let movies = response.movies {
                     startIndex = moviesArray.count
                     moviesArray.append(contentsOf: movies)
