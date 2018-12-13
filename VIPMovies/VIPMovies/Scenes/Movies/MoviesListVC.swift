@@ -77,7 +77,6 @@ class MoviesListVC: BaseViewController {
     
     // Pull to refresh action
     @objc private func refreshList(_ refreshControl: UIRefreshControl) {
-        refreshControl.endRefreshing()
         moviesArray.removeAll()
         moviesCollectionView.reloadData()
         currentPage = 1
@@ -161,6 +160,7 @@ extension MoviesListVC: MovieDisplayLogic {
                 DispatchQueue.main.async { [weak self] in
                     let insertIndexPaths = Array(startIndex...endIndex).map { IndexPath(item: $0, section: 0) }
                     self?.moviesCollectionView.insertItems(at: insertIndexPaths)
+                    self?.refreshControl.endRefreshing()
                 }
             }
         } else {
