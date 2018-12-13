@@ -1,0 +1,21 @@
+# Uncomment the next line to define a global platform for your project
+ platform :ios, '10.0'
+
+target 'VIPMovies' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+#    pod 'NVActivityIndicatorView'
+	pod 'SDWebImage'
+
+
+  target 'VIPMoviesTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'VIPMoviesUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
